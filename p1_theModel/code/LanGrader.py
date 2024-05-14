@@ -1,3 +1,17 @@
+# LanGrader.py
+# Created by Sam (Kuangyi) Hu
+
+# Purpose: Create a simple runnable LLM model that evaluates the quality of an 
+# given argument. The model should: 
+#  - take a sentence as input
+#  - provide a numerical output indicating quality
+
+# last updated: May 13rd, 2024
+# current state: unable to train model; double output reference than prediction
+
+
+
+
 # import pandas as pd
 # from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer
 # import torch
@@ -128,7 +142,7 @@
 # trainer.train()
 
 
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, DataCollatorWithPadding
 from datasets import load_dataset
 
 
@@ -172,3 +186,33 @@ def compute_metrics(eval_pred):
    predictions = sigmoid(predictions)
    predictions = (predictions > 0.5).astype(float).reshape(-1)
    return clf_metrics.compute(predictions=predictions, references=labels.astype(float).reshape(-1))
+
+
+model = AutoModelForSequenceClassification.from_pretrained(model_path)
+
+data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
+
+training_args = TrainingArguments(
+    output_dir="./output",
+    learning_rate=3e-5,
+    num_train_epochs=3,
+    per_device_train_batch_size=8,
+    per_device_eval_batch_size=8,
+    weight_decay=0.01,
+    evaluation_strategy="epoch",
+    save_strategy="epoch",
+    load_best_model_at_end=True,
+)
+
+trainer = Trainer(
+
+   model=model,
+   args=training_args,
+   train_dataset=train,
+   eval_dataset=val,
+   tokenizer=tokenizer,
+   data_collator=data_collator,
+   compute_metrics=compute_metrics,
+)
+
+trainer.train()

@@ -17,6 +17,14 @@ I chose deberta-v3 from microsoft somewhat arbitrarily, as I was more or less fo
 
 As of now, I am unsure whether have I successfully created the desired model.
 
+
+### Some thought process
+
+There were two approaches that came to me. The first one is rather simple: a text-regression model that spits out some value between 0 and 1 using RELU or sigmoid indicating quality. This solves the basic requirement nice and easy.
+
+An alternative model would be more generic but expandable: multi-label classification. I got this idea from a previous project in my internship. The justification for this method is the variety of results it could provide with just a single model: it could ideally provide the topic (through generic tags like the imdb movie tags), the rating/ranking of argument (through levels 1 through 10, or some ordinal scale such as the letter grade), and the stance of the argument simultaneously. Doing so would demand more preprocessing than what the current IBM dataset provides, and most likely more data due to increased complexity.
+
+
 ### Method 1: training locally with torch/transformer
 
 For the versions of code, please see ```p1_theModel```.
