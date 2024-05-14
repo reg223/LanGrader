@@ -1,6 +1,6 @@
 # LanGrader: an AI solution to evaluating arguments
 
-**Last updated: May 14th, 2024, 0:25CST**
+**Last updated: May 14th, 2024, 1:21CST**
 
 The project is inspired by [this paper](https://arxiv.org/pdf/1911.11408), and is a trial project prepared for Professor Vasanth Sarathy at Tufts University.
 
@@ -46,10 +46,17 @@ TODO: run some test to make sure the model runs;
 
 ## The Second Stage: Web Interface
 
-I decided to begin the implementation of stage 1's UI to ensure some progress is made
+I decided to begin the implementation of stage 1's UI to ensure some progress is made.
 
 WIP
 
 ## The Final Stage: Extra Features
 
 WIP
+
+
+## Resources I used during this process
+
+- stack overflow, chatGPT for debugging and general inquiry
+- [Paper on argument quality ranking](https://arxiv.org/pdf/1911.11408), for inspiration and dataset
+- documentation for pytorch, transformer
