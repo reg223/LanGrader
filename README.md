@@ -69,6 +69,10 @@ Two slightly different approaches were made: using the raw csv as per, and parsi
 
 I decided to begin the implementation of stage 1's UI to ensure some progress is made.
 
+A [Figma prototype](https://www.figma.com/design/PQ7FYHIATeJOMYmmLdtrwm/LanGrader-interactive-prototype?node-id=0%3A1&t=T2Zi8hpsa8GWm0Cb-1) was made to give a preview of what the site would look like. (WIP)
+
+
+
 WIP
 
 ## The Final Stage: Extra Features
